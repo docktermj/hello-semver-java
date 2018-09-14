@@ -1,6 +1,10 @@
 package com.dockter.semver.java;
 
-public final class Version {
+/**
+ * A class specifically for capturing build information. This information comes
+ * from the pom.xml.
+ */
+public final class BuildInfo {
 
 	private static final String VERSION = "${project.version}";
 	private static final String GROUPID = "${project.groupId}";
@@ -10,5 +14,4 @@ public final class Version {
 	public static String getVersion() {
 		return VERSION;
 	}
-
 }
