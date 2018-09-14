@@ -3,6 +3,7 @@
 PROGRAM_NAME := $(shell basename `git rev-parse --show-toplevel`)
 
 GIT_VERSION := $(shell git describe --always --tags --abbrev=0 --dirty)
+GIT_ITERATION := $(shell git log $(BUILD_TAG)..HEAD --oneline | wc -l | sed -e 's/^[ \t]*//')
 
 # -----------------------------------------------------------------------------
 # The first "make" target runs as default.
@@ -38,7 +39,7 @@ clean:
 
 .PHONY: help
 help:
-	@echo 'Build $(PROGRAM_NAME) version $(GIT_VERSION)'
+	@echo 'Build $(PROGRAM_NAME) version $(GIT_VERSION) iteration $(GIT_ITERATION)'
 	@echo 'Example make commands:'
 	@echo '  "make package"                      Build locally'
 	@echo '  "make run"                          Run the java program'  
