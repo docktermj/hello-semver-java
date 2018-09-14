@@ -2,7 +2,7 @@
 # It should match <artifactId> in pom.xml
 PROGRAM_NAME := $(shell basename `git rev-parse --show-toplevel`)
 
-GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed 's/\-g.......//')
+GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\-0//' -e 's/\-g.......//')
 
 # -----------------------------------------------------------------------------
 # The first "make" target runs as default.
