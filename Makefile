@@ -38,8 +38,7 @@ clean:
 
 .PHONY: help
 help:
-	@echo 'Build $(PROGRAM_NAME)-$(GIT_VERSION).jar'
-	@echo 'Example make commands:'
+	@echo 'make commands for $(PROGRAM_NAME)-$(GIT_VERSION).jar:'
 	@echo '  "make package"                      Build locally'
 	@echo '  "make run"                          Run the java program'  
 	@echo "List of make targets:"
