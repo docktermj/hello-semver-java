@@ -2,8 +2,7 @@
 # It should match <artifactId> in pom.xml
 PROGRAM_NAME := $(shell basename `git rev-parse --show-toplevel`)
 
-GIT_VERSION := $(shell git describe --always --tags --abbrev=0 --dirty)
-GIT_ITERATION := $(shell git log $(BUILD_TAG)..HEAD --oneline | wc -l | sed -e 's/^[ \t]*//')
+GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed 's/\-g.......//')
 
 # -----------------------------------------------------------------------------
 # The first "make" target runs as default.
@@ -39,7 +38,7 @@ clean:
 
 .PHONY: help
 help:
-	@echo 'Build $(PROGRAM_NAME) version $(GIT_VERSION) iteration $(GIT_ITERATION)'
+	@echo 'Build $(PROGRAM_NAME)-$(GIT_VERSION).jar'
 	@echo 'Example make commands:'
 	@echo '  "make package"                      Build locally'
 	@echo '  "make run"                          Run the java program'  
