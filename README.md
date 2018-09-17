@@ -95,6 +95,48 @@ make clean
 
 ### Demo 3 - Building specific version
 
+List version.
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make git-tag-list
+```
+
+Choose version. Example:
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+git checkout 0.0.4
+```
+
+#### Build specific version
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make package
+```
+
+#### Run specific version
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make run
+```
+
+#### Cleanup specific version
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make clean
+```
+
+#### Checkout master branch
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+git checkout master
+```
+
 ### Demo 4 - Building a specific git SHA
 
 ### Demo 5 - Comparing code across versions
