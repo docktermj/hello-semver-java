@@ -95,12 +95,12 @@ make clean
 
 ### Demo 3 - Dirty builds
 
-The resulting JAR file may have 3 different formats.
+The resulting JAR filename may have 3 different formats.
 Examples:
 
-1. hello-semver-java-0.0.5.jar
-1. hello-semver-java-0.0.5-2.jar
-1. hello-semver-java-0.0.5-2-dirty.jar
+1. hello-semver-java-0.0.7.jar
+1. hello-semver-java-0.0.7-2.jar
+1. hello-semver-java-0.0.7-2-dirty.jar
 
 `hello-semver-java-0.0.7.jar`
 is an example of a build for a specific release tag.
