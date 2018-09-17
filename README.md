@@ -93,9 +93,9 @@ cd ${GIT_REPOSITORY_DIR}
 make clean
 ```
 
-### Demo 3 - Building specific version
+### Demo 3 - Build specific version
 
-List version.
+List versions.
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
@@ -137,6 +137,63 @@ cd ${GIT_REPOSITORY_DIR}
 git checkout master
 ```
 
-### Demo 4 - Building a specific git SHA
+### Demo 4 - Build specific version and iteration
 
-### Demo 5 - Comparing code across versions
+This demonstration builds `hello-semver-java-0.0.4-2.jar,
+a file with a version ('0.0.4') and an iteration ('2').
+
+List versions starting at tag `0.0.4` using the `GIT_TAG` parameter.
+
+```console
+$ cd ${GIT_REPOSITORY_DIR}
+$ make git-iterations GIT_TAG=0.0.4
+
+git log 0.0.4..HEAD --reverse --oneline | nl
+     1	b53fcd5 issue-1 Added Dockerfile and examplar git commands
+     2	ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1
+     3	e475c06 issue-1 Upped to version to 0.0.5
+     4	7da7d26 Merge pull request #10 from docktermj/issue-1.dockter.1
+     5	18a9de7 issue-1 Add instructions for specific version
+```
+
+Look for iteration #2,
+"`2	ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1`"
+
+Use the hashed SHA from iteration 2 in the list to perform the `git checkout`.
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+git checkout ce5a763
+```
+
+#### Build specific version and iteration
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make package
+```
+
+#### Run specific version and iteration
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make run
+```
+
+#### Cleanup specific version and iteration
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make clean
+```
+
+#### Checkout master branch
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+git checkout master
+```
+
+### Demo 5 - Build specific git SHA
+
+### Demo 6 - Compare code across versions
