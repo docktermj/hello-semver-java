@@ -93,8 +93,6 @@ cd ${GIT_REPOSITORY_DIR}
 make clean
 ```
 
-
-
 ### Demo 3 - Dirty builds
 
 The resulting JAR file may have 3 different formats.
