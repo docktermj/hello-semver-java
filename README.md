@@ -4,7 +4,7 @@ Explore Semantic Versioning in a Java project.
 
 ## Demonstration
 
-### Set up a development environment
+### Preparation
 
 #### Set Environment variables
 
@@ -34,30 +34,67 @@ cd  ${GIT_ACCOUNT_DIR}
 git clone ${GIT_REPOSITORY_URL}
 ```
 
-### Verify development environment
+#### Verify development environment
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
 make precheck
 ```
 
-### Build
+### Demo 1 - Local build and run
+
+This is the pattern of usage during development.
+The artifact is built and tested on a local workstation.
+
+#### Build local
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
 make package
 ```
 
-### Run
+#### Run local
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
 make run
 ```
 
-### Cleanup
+#### Cleanup local
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
 make clean
 ```
+
+### Demo 2 - Docker-based build and run
+
+This is the pattern of usage during the final development stage and in continuous integration (CI).
+The artifact is built and tested on a clean docker image.
+
+#### Build via docker
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make docker-package
+```
+
+#### Run via docker
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make run
+```
+
+#### Cleanup via docker
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+make clean
+```
+
+### Demo 3 - Building specific version
+
+### Demo 4 - Building a specific git SHA
+
+### Demo 5 - Comparing code across versions
