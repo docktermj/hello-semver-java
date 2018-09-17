@@ -2,7 +2,11 @@
 # It should match <artifactId> in pom.xml
 PROGRAM_NAME := $(shell basename `git rev-parse --show-toplevel`)
 
+# Information from git
+
+GIT_REPOSITORY_NAME := $(shell basename `git rev-parse --show-toplevel`)
 GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\-0//' -e 's/\-g.......//')
+GIT_SHA := $(shell git log --pretty=format:'%H' -n 1)
 
 # -----------------------------------------------------------------------------
 # The first "make" target runs as default.
@@ -17,7 +21,10 @@ default: help
 
 .PHONY: package
 package:
-	mvn package -Dproject.version=$(GIT_VERSION)
+	mvn package \
+	  -Dproject.version=$(GIT_VERSION) \
+	  -Dgit.repository.name=$(GIT_REPOSITORY_NAME) \
+	  -Dgit.sha=$(GIT_SHA)
 
 .PHONY: run
 run:
