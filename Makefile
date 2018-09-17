@@ -7,7 +7,8 @@ PROGRAM_NAME := $(shell basename `git rev-parse --show-toplevel`)
 GIT_REPOSITORY_NAME := $(shell basename `git rev-parse --show-toplevel`)
 GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\-0//' -e 's/\-g.......//')
 GIT_SHA := $(shell git log --pretty=format:'%H' -n 1)
-GIT_LAST_TAG := $(shell git describe --always --tags | awk -F "-" '{print $$1}')
+GIT_TAG ?= $(shell git describe --always --tags | awk -F "-" '{print $$1}')
+GIT_TAG_END ?= HEAD
 
 # Docker
 
@@ -64,7 +65,7 @@ docker-package:
 
 .PHONY: git-iterations
 git-iterations:
-	git log $(GIT_LAST_TAG)..HEAD --reverse --oneline | nl
+	git log $(GIT_TAG)..$(GIT_TAG_END) --reverse --oneline | nl
 
 .PHONY: git-iterations-all
 git-iterations-all:
@@ -95,9 +96,8 @@ precheck:
 
 .PHONY: clean
 clean:
-	-rm -rf bin
 	-mvn clean -Dproject.version=$(GIT_VERSION)
-	-docker rmi --force $(DOCKER_IMAGE)	
+	-docker rmi --force $(DOCKER_IMAGE)
 
 .PHONY: help
 help:
