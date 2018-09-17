@@ -93,16 +93,14 @@ cd ${GIT_REPOSITORY_DIR}
 make clean
 ```
 
-
-
 ### Demo 3 - Dirty builds
 
-The resulting JAR file may have 3 different formats.
+The resulting JAR filename may have 3 different formats.
 Examples:
 
-1. hello-semver-java-0.0.5.jar
-1. hello-semver-java-0.0.5-2.jar
-1. hello-semver-java-0.0.5-2-dirty.jar
+1. hello-semver-java-0.0.7.jar
+1. hello-semver-java-0.0.7-2.jar
+1. hello-semver-java-0.0.7-2-dirty.jar
 
 `hello-semver-java-0.0.7.jar`
 is an example of a build for a specific release tag.
@@ -120,10 +118,10 @@ cd ${GIT_REPOSITORY_DIR}
 git checkout 0.0.7
 make filename
 
-git checkout 1b62f4a
+git checkout bd0b1de
 make filename
 
-touch README.md
+echo "" >> README.md
 make filename
 ```
 
