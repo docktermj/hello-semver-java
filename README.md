@@ -118,7 +118,7 @@ cd ${GIT_REPOSITORY_DIR}
 git checkout 0.0.7
 make filename
 
-git checkout 1b62f4a
+git checkout bd0b1de
 make filename
 
 touch README.md
