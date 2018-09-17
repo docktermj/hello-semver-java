@@ -93,7 +93,41 @@ cd ${GIT_REPOSITORY_DIR}
 make clean
 ```
 
-### Demo 3 - Build specific version
+
+
+### Demo 3 - Dirty builds
+
+The resulting JAR file may have 3 different formats.
+Examples:
+
+1. hello-semver-java-0.0.5.jar
+1. hello-semver-java-0.0.5-2.jar
+1. hello-semver-java-0.0.5-2-dirty.jar
+
+`hello-semver-java-0.0.5.jar`
+is an example of a build for a specific release tag.
+
+`hello-semver-java-0.0.5-2.jar`
+is an example of a build that is 2 "iterations" after a specific release tag.
+
+`hello-semver-java-0.0.5-2-dirty.jar`
+is an example of code that has been locally modified 2 iterations after a specific release tag.
+
+To demonstrate:
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+git checkout 0.0.5
+make filename
+
+git checkout 1b62f4a
+make filename
+
+touch README.md
+make filename
+```
+
+### Demo 4 - Build specific version
 
 List versions.
 
@@ -111,7 +145,7 @@ git checkout 0.0.4
 
 Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
 
-### Demo 4 - Build specific version and iteration
+### Demo 5 - Build specific version and iteration
 
 This demonstration builds `hello-semver-java-0.0.4-2.jar,
 a file with a version ('0.0.4') and an iteration ('2').
@@ -142,7 +176,7 @@ git checkout ce5a763
 
 Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
 
-### Demo 5 - Build specific git SHA
+### Demo 6 - Build specific git SHA
 
 In each JAR file created, there is a `build-info.properties` file.
 Example contents:
@@ -178,7 +212,7 @@ git checkout 1b62f4a951bd6b67ea41810aa8f4e92377f5bef6
 
 Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
 
-### Demo 6 - Compare code across versions
+### Demo 7 - Compare code across versions
 
 Based on Git's documentation for [git diff](https://git-scm.com/docs/git-diff).
 
