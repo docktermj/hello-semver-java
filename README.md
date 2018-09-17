@@ -123,6 +123,10 @@ make filename
 
 echo "" >> README.md
 make filename
+git checkout README.md
+
+git checkout master
+make filename
 ```
 
 ### Demo 4 - Build specific version
