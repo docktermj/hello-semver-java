@@ -46,7 +46,7 @@ make precheck
 This is the pattern of usage during development.
 The artifact is built and tested on a local workstation.
 
-#### Build local
+#### Package local
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
@@ -72,7 +72,7 @@ make clean
 This is the pattern of usage during the final development stage and in continuous integration (CI).
 The artifact is built and tested on a clean docker image.
 
-#### Build via docker
+#### Package via docker
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
@@ -109,33 +109,7 @@ cd ${GIT_REPOSITORY_DIR}
 git checkout 0.0.4
 ```
 
-#### Build specific version
-
-```console
-cd ${GIT_REPOSITORY_DIR}
-make package
-```
-
-#### Run specific version
-
-```console
-cd ${GIT_REPOSITORY_DIR}
-make run
-```
-
-#### Cleanup specific version
-
-```console
-cd ${GIT_REPOSITORY_DIR}
-make clean
-```
-
-#### Checkout master branch
-
-```console
-cd ${GIT_REPOSITORY_DIR}
-git checkout master
-```
+Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
 
 ### Demo 4 - Build specific version and iteration
 
@@ -149,15 +123,15 @@ $ cd ${GIT_REPOSITORY_DIR}
 $ make git-iterations GIT_TAG=0.0.4
 
 git log 0.0.4..HEAD --reverse --oneline | nl
-     1	b53fcd5 issue-1 Added Dockerfile and examplar git commands
-     2	ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1
-     3	e475c06 issue-1 Upped to version to 0.0.5
-     4	7da7d26 Merge pull request #10 from docktermj/issue-1.dockter.1
-     5	18a9de7 issue-1 Add instructions for specific version
+     1 b53fcd5 issue-1 Added Dockerfile and examplar git commands
+     2 ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1
+     3 e475c06 issue-1 Upped to version to 0.0.5
+     4 7da7d26 Merge pull request #10 from docktermj/issue-1.dockter.1
+     5 18a9de7 issue-1 Add instructions for specific version
 ```
 
 Look for iteration #2,
-"`2	ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1`"
+"`2 ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1`"
 
 Use the hashed SHA from iteration 2 in the list to perform the `git checkout`.
 
@@ -166,21 +140,63 @@ cd ${GIT_REPOSITORY_DIR}
 git checkout ce5a763
 ```
 
-#### Build specific version and iteration
+Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
+
+### Demo 5 - Build specific git SHA
+
+In each JAR file created, there is a `build-info.properties` file.
+Example contents:
+
+```properties
+# Build information
+
+build.file=hello-semver-java-0.0.5-2.jar
+build.timestamp=2018-09-17 21:08
+
+# Maven information
+
+version=0.0.5-2
+groupId=com.dockter
+artifactId=hello-semver-java
+
+# Git information
+
+git.repository.name=hello-semver-java
+git.sha=1b62f4a951bd6b67ea41810aa8f4e92377f5bef6
+```
+
+To rebuild the JAR file
+or simply inspect the code used to produce the JAR file,
+use the `git.sha` value in the `build-info.properties` file
+when doing a `git checkout`.
+Example:
+
+```console
+cd ${GIT_REPOSITORY_DIR}
+git checkout 1b62f4a951bd6b67ea41810aa8f4e92377f5bef6
+```
+
+Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
+
+### Demo 6 - Compare code across versions
+
+### Demo package-run-cleanup
+
+#### Package
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
 make package
 ```
 
-#### Run specific version and iteration
+#### Run
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
 make run
 ```
 
-#### Cleanup specific version and iteration
+#### Cleanup
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
@@ -193,7 +209,3 @@ make clean
 cd ${GIT_REPOSITORY_DIR}
 git checkout master
 ```
-
-### Demo 5 - Build specific git SHA
-
-### Demo 6 - Compare code across versions
