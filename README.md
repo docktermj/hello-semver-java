@@ -104,20 +104,20 @@ Examples:
 1. hello-semver-java-0.0.5-2.jar
 1. hello-semver-java-0.0.5-2-dirty.jar
 
-`hello-semver-java-0.0.5.jar`
+`hello-semver-java-0.0.7.jar`
 is an example of a build for a specific release tag.
 
-`hello-semver-java-0.0.5-2.jar`
+`hello-semver-java-0.0.7-2.jar`
 is an example of a build that is 2 "iterations" after a specific release tag.
 
-`hello-semver-java-0.0.5-2-dirty.jar`
+`hello-semver-java-0.0.7-2-dirty.jar`
 is an example of code that has been locally modified 2 iterations after a specific release tag.
 
 To demonstrate:
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
-git checkout 0.0.5
+git checkout 0.0.7
 make filename
 
 git checkout 1b62f4a
