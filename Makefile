@@ -96,7 +96,7 @@ precheck:
 
 .PHONY: filename
 filename:
-	@echo '$(PROGRAM_NAME)-$(GIT_VERSION).jar:'
+	@echo '$(PROGRAM_NAME)-$(GIT_VERSION).jar'
 
 .PHONY: clean
 clean:
