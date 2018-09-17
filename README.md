@@ -121,7 +121,7 @@ make filename
 git checkout bd0b1de
 make filename
 
-touch README.md
+echo "Remove this file" > remove-this-file.txt
 make filename
 ```
 
