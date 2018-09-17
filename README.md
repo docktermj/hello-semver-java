@@ -121,7 +121,7 @@ make filename
 git checkout bd0b1de
 make filename
 
-echo "" > README.md
+echo "" >> README.md
 make filename
 ```
 
