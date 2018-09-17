@@ -1,6 +1,6 @@
 # hello-semver-java
 
-Explore Semantic Versioning in a Java project.
+Explore [Semantic Versioning](https://semver.org/) in a Java project.
 
 ## Demonstration
 
@@ -180,7 +180,31 @@ Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
 
 ### Demo 6 - Compare code across versions
 
+Based on Git's documentation for [git diff](https://git-scm.com/docs/git-diff).
+
+Get the hashed SHA for two versions.
+Example
+
+```console
+$ cd ${GIT_REPOSITORY_DIR}
+$ make git-iterations
+
+git log 0.0.5..HEAD --reverse --oneline | nl
+     1 18a9de7 issue-1 Add instructions for specific version
+     2 1b62f4a issue-1 Working on tag/iteration builds
+     3 961cc23 issue-1 Documenting building to git SHA
+```
+
+Then pick 2 hashed SHAs for the `git diff`.
+Example:
+
+```console
+git diff 18a9de7 1b62f4a
+```
+
 ### Demo package-run-cleanup
+
+This is re-usable code from demonstration above.
 
 #### Package
 

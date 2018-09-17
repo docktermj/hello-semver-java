@@ -96,7 +96,6 @@ precheck:
 
 .PHONY: clean
 clean:
-	-rm -rf bin
 	-mvn clean -Dproject.version=$(GIT_VERSION)
 	-docker rmi --force $(DOCKER_IMAGE)
 
