@@ -4,7 +4,7 @@ Explore [Semantic Versioning](https://semver.org/) in a Java project.
 
 ## Background
 
-### Why Semantic Versioning?
+### Why Semantic Versioning
 
 [Semantic Versioning](https://semver.org/) (a.k.a SemVer)
 helps customers of your public API avoid breakage.
@@ -69,6 +69,7 @@ The version could also be more specific if the customer used functionality in a 
 ```
 
 References:
+
 1. [Dependency Version Requirement Specification](https://maven.apache.org/pom.html#Dependency_Version_Requirement_Specification)
 1. [Maven Version Range Specification](https://maven.apache.org/enforcer/enforcer-rules/versionRanges.html)
 
