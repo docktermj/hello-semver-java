@@ -9,7 +9,7 @@ Explore [Semantic Versioning](https://semver.org/) in a Java project.
 [Semantic Versioning](https://semver.org/) (a.k.a SemVer)
 helps customers of your public API avoid breakage.
 
-Semantic Versioning's MAJOR.MINOR.PATCH scheme with the following semantics:
+Semantic Versioning's MAJOR.MINOR.PATCH scheme has the following semantics:
 
 > 1. MAJOR version when you make incompatible API changes,
 > 2. MINOR version when you add functionality in a backwards-compatible manner, and
@@ -17,7 +17,7 @@ Semantic Versioning's MAJOR.MINOR.PATCH scheme with the following semantics:
 >
 > -- <cite>Semantic Versioning 2.0's [Summary](https://semver.org/#summary)</cite>
 
-allows tool chains to gracefully use new functionality
+It allows tool chains to gracefully use new functionality
 and prevent breakage upon incompatible API changes.
 
 If your software does not support a public API,
@@ -31,7 +31,7 @@ Here are some organizations using Semantic Versioning:
 1. [Apache couchdb](https://github.com/apache/couchdb/releases)
 1. [Apache kafka](https://github.com/apache/kafka/releases)
 
-### Maven dependency management
+### Maven dependency management used by the customer
 
 In this example, a customer is using version 1.x.x and avoiding 2.0.0 and above
 during their build process.
@@ -62,7 +62,8 @@ specify the use of only versions 1.x.x in the `<version>` XML stanza like this:
     </project>
 ```
 
-The version could also be more specific if the customer used functionality in a specific release.
+If a customer uses functionality introduced in a MINOR release, the version can be more specific.
+For instance, if the customer code relies on an API introduced in version `1.3.0`, the `pom.xml` would specify this:
 
 ```xml
           <version>[1.3,2.0)</version>
