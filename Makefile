@@ -10,6 +10,7 @@ GIT_SHA := $(shell git log --pretty=format:'%H' -n 1)
 GIT_TAG ?= $(shell git describe --always --tags | awk -F "-" '{print $$1}')
 GIT_TAG_END ?= HEAD
 GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\-0//' -e 's/\-g.......//')
+GIT_VERSION_LONG := $(shell git describe --always --tags --long --dirty)
 
 # Docker
 
@@ -32,7 +33,8 @@ package:
 	  -Dproject.version=$(GIT_VERSION) \
 	  -Dgit.branch=$(GIT_BRANCH) \
 	  -Dgit.repository.name=$(GIT_REPOSITORY_NAME) \
-	  -Dgit.sha=$(GIT_SHA)
+	  -Dgit.sha=$(GIT_SHA) \
+	  -Dgit.version.long=$(GIT_VERSION_LONG)
 
 .PHONY: run
 run:
@@ -107,7 +109,7 @@ clean:
 
 .PHONY: help
 help:
-	@echo 'make commands for $(PROGRAM_NAME)-$(GIT_VERSION).jar from "$(GIT_BRANCH)" branch:'
+	@echo 'make commands for $(PROGRAM_NAME)-$(GIT_VERSION).jar'
 	@echo '  "make package"             Build locally'
 	@echo '  "make docker-package"      Build in a docker container'
 	@echo '  "make run"                 Run the java program'
@@ -117,6 +119,11 @@ help:
 	@echo '  "make git-sha-last"        Show SHA of last commit'
 	@echo '  "make git-tag-last"        Show last tag defined'
 	@echo '  "make git-tag-list"        Show list of tags'
+	@echo ''
+	@echo 'Git information:'
+	@echo '   Branch: $(GIT_BRANCH)'
+	@echo '      SHA: $(GIT_SHA)'	
+	@echo '  Version: $(GIT_VERSION_LONG)'
 	@echo ''
 	@echo "List of make targets:"
 	@$(MAKE) -pRrq -f $(lastword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/^# File/,/^# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | egrep -v -e '^[^[:alnum:]]' -e '^$@$$' | xargs

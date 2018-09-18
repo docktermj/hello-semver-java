@@ -19,4 +19,6 @@ COPY . /${GIT_REPOSITORY_NAME}
 WORKDIR /${GIT_REPOSITORY_NAME}
 RUN make package
 
+# At runtime, run the following:
+
 CMD /bin/bash

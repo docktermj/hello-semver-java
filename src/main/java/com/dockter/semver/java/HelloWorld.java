@@ -8,9 +8,11 @@ public class HelloWorld {
 		System.out.println("");
 		System.out.println("Hello World!");
 		System.out.println("Code version: 0.0.8");
-		System.out.println("Git  version: " + BuildInfo.getVersion());
-		System.out.println("Git      SHA: " + BuildInfo.getGitSHA());
-		System.out.println("Build   date: " + BuildInfo.getTimestamp());
+		System.out.println("Git  version: " + BuildInfo.getMavenVersion());
+		System.out.println("");
+		System.out.println("Git SHA: " + BuildInfo.getGitSHA());
+		System.out.println("Git long version: " + BuildInfo.getGitVersionLong());
+		System.out.println("Build date: " + BuildInfo.getMavenTimestamp());
 		System.out.println("");
 	}
 }
