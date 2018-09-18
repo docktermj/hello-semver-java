@@ -2,6 +2,77 @@
 
 Explore [Semantic Versioning](https://semver.org/) in a Java project.
 
+## Background
+
+### Why Semantic Versioning
+
+[Semantic Versioning](https://semver.org/) (a.k.a SemVer)
+helps customers of your public API avoid breakage.
+
+Semantic Versioning's MAJOR.MINOR.PATCH scheme with the following semantics:
+
+> 1. MAJOR version when you make incompatible API changes,
+> 2. MINOR version when you add functionality in a backwards-compatible manner, and
+> 3. PATCH version when you make backwards-compatible bug fixes.
+>
+> -- <cite>Semantic Versioning 2.0's [Summary](https://semver.org/#summary)</cite>
+
+allows tool chains to gracefully use new functionality
+and prevent breakage upon incompatible API changes.
+
+If your software does not support a public API,
+then Semantic Versioning may not be a good fit.
+
+### Semantic Versioning in use
+
+Here are some organizations using Semantic Versioning:
+
+1. [Apache httpd](https://github.com/apache/httpd/releases)
+1. [Apache couchdb](https://github.com/apache/couchdb/releases)
+1. [Apache kafka](https://github.com/apache/kafka/releases)
+
+### Maven dependency management
+
+In this example, a customer is using version 1.x.x and avoiding 2.0.0 and above
+during their build process.
+By doing this, the customer prevents surprise breakage
+due to a backwards incompatible API change.
+Naturally, a customer would migrate to 2.0.0 and above,
+but only after testing their usage of the new API against their code.
+
+In a Maven `pom.xml` file, a customer would
+specify the use of only versions 1.x.x in the `<version>` XML stanza like this:
+
+```xml
+    <project xmlns="http://maven.apache.org/POM/4.0.0"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                          https://maven.apache.org/xsd/maven-4.0.0.xsd">
+      ...
+      <dependencies>
+        <dependency>
+          <groupId>com.dockter</groupId>
+          <artifactId>hello-semver-java</artifactId>
+          <version>[1.0,2.0)</version>
+          <type>jar</type>
+        </dependency>
+        ...
+      </dependencies>
+      ...
+    </project>
+```
+
+The version could also be more specific if the customer used functionality in a specific release.
+
+```xml
+          <version>[1.3,2.0)</version>
+```
+
+References:
+
+1. [Dependency Version Requirement Specification](https://maven.apache.org/pom.html#Dependency_Version_Requirement_Specification)
+1. [Maven Version Range Specification](https://maven.apache.org/enforcer/enforcer-rules/versionRanges.html)
+
 ## Demonstration
 
 ### Preparation
@@ -40,6 +111,38 @@ git clone ${GIT_REPOSITORY_URL}
 cd ${GIT_REPOSITORY_DIR}
 make precheck
 ```
+
+#### make help
+
+Running `make` without parameters will show the help information.
+
+```console
+$ make
+
+make commands for hello-semver-java-0.0.7-11.jar:
+  "make package"             Build locally
+  "make docker-package"      Build in a docker container
+  "make run"                 Run the java program
+  "make clean"               Delete generated artifacts
+  "make git-iterations"      Show iterations since last tag
+  "make git-iterations-all"  Show iterations since beginning
+  "make git-sha-last"        Show SHA of last commit
+  "make git-tag-last"        Show last tag defined
+  "make git-tag-list"        Show list of tags
+
+List of make targets:
+clean default docker-package filename git-iterations git-iterations-all git-sha-last git-tag-last git-tag-list package precheck run
+```
+
+The first line of the output:
+
+```console
+make commands for hello-semver-java-0.0.7-11.jar:
+```
+
+shows the name of the file that will be build by running `make package` or `make docker-package`.
+
+The `List of make targets:` shows all of the targets defined in the `Makefile`.
 
 ### Demo 1 - Local build and run
 
@@ -122,6 +225,10 @@ git checkout bd0b1de
 make filename
 
 echo "" >> README.md
+make filename
+git checkout README.md
+
+git checkout master
 make filename
 ```
 
