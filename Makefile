@@ -94,8 +94,11 @@ git-tag-list:
 # Just a check to see if all of the prerequisites are installed and working.
 .PHONY: precheck
 precheck:
+	@echo ''
 	git --version
+	@echo ''
 	mvn --version
+	@echo ''
 	docker --version
 
 .PHONY: filename
