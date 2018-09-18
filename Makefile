@@ -4,11 +4,13 @@ PROGRAM_NAME := $(shell basename `git rev-parse --show-toplevel`)
 
 # Information from git
 
+GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
 GIT_REPOSITORY_NAME := $(shell basename `git rev-parse --show-toplevel`)
-GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\-0//' -e 's/\-g.......//')
 GIT_SHA := $(shell git log --pretty=format:'%H' -n 1)
 GIT_TAG ?= $(shell git describe --always --tags | awk -F "-" '{print $$1}')
 GIT_TAG_END ?= HEAD
+GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\-0//' -e 's/\-g.......//')
+
 
 # Docker
 
@@ -29,6 +31,7 @@ default: help
 package:
 	mvn package \
 	  -Dproject.version=$(GIT_VERSION) \
+	  -Dgit.branch=$(GIT_BRANCH) \
 	  -Dgit.repository.name=$(GIT_REPOSITORY_NAME) \
 	  -Dgit.sha=$(GIT_SHA)
 
@@ -105,7 +108,7 @@ clean:
 
 .PHONY: help
 help:
-	@echo 'make commands for $(PROGRAM_NAME)-$(GIT_VERSION).jar:'
+	@echo 'make commands for $(PROGRAM_NAME)-$(GIT_VERSION).jar from "$(GIT_BRANCH)" branch:'
 	@echo '  "make package"             Build locally'
 	@echo '  "make docker-package"      Build in a docker container'
 	@echo '  "make run"                 Run the java program'
