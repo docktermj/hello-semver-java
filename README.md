@@ -112,6 +112,38 @@ cd ${GIT_REPOSITORY_DIR}
 make precheck
 ```
 
+#### make help
+
+Running `make` without parameters will show the help information.
+
+```console
+$ make
+
+make commands for hello-semver-java-0.0.7-11.jar:
+  "make package"             Build locally
+  "make docker-package"      Build in a docker container
+  "make run"                 Run the java program
+  "make clean"               Delete generated artifacts
+  "make git-iterations"      Show iterations since last tag
+  "make git-iterations-all"  Show iterations since beginning
+  "make git-sha-last"        Show SHA of last commit
+  "make git-tag-last"        Show last tag defined
+  "make git-tag-list"        Show list of tags
+
+List of make targets:
+clean default docker-package filename git-iterations git-iterations-all git-sha-last git-tag-last git-tag-list package precheck run
+```
+
+The first line of the output:
+
+```console
+make commands for hello-semver-java-0.0.7-11.jar:
+```
+
+shows the name of the file that will be build by running `make package` or `make docker-package`.
+
+The `List of make targets:` shows all of the targets defined in the `Makefile`.
+
 ### Demo 1 - Local build and run
 
 This is the pattern of usage during development.
