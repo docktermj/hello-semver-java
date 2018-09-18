@@ -7,7 +7,7 @@ public class HelloWorld {
 	public static void main(String[] args) {
 		System.out.println("");
 		System.out.println("Hello World!");
-		System.out.println("Code version: 0.0.9");
+		System.out.println("Code version: 0.0.10");
 		System.out.println("Git  version: " + BuildInfo.getMavenVersion());
 		System.out.println("");
 		System.out.println("Git SHA: " + BuildInfo.getGitSHA());
