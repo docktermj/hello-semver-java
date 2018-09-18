@@ -230,7 +230,7 @@ cd ${GIT_REPOSITORY_DIR}
 git checkout 0.0.9
 make filename
 
-git checkout bd0b1de
+git checkout c65ecdc
 make filename
 
 echo "" >> README.md
@@ -254,7 +254,7 @@ Choose version. Example:
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
-git checkout 0.0.4
+git checkout 0.0.9
 ```
 
 Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
@@ -268,24 +268,21 @@ List versions starting at tag `0.0.4` using the `GIT_TAG` parameter.
 
 ```console
 $ cd ${GIT_REPOSITORY_DIR}
-$ make git-iterations GIT_TAG=0.0.4
+$ make git-iterations GIT_TAG=0.0.9
 
-git log 0.0.4..HEAD --reverse --oneline | nl
-     1 b53fcd5 issue-1 Added Dockerfile and examplar git commands
-     2 ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1
-     3 e475c06 issue-1 Upped to version to 0.0.5
-     4 7da7d26 Merge pull request #10 from docktermj/issue-1.dockter.1
-     5 18a9de7 issue-1 Add instructions for specific version
+git log 0.0.9..HEAD --reverse --oneline | nl
+     1	c65ecdc issue-1 Modify examples
+     2	179bf58 Merge pull request #15 from docktermj/issue-1.dockter.1
 ```
 
 Look for iteration #2,
-"`2 ce5a763 Merge pull request #9 from docktermj/issue-1.dockter.1`"
+"`2	179bf58 Merge pull request #15 from docktermj/issue-1.dockter.1`"
 
 Use the hashed SHA from iteration 2 in the list to perform the `git checkout`.
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
-git checkout ce5a763
+git checkout 179bf58
 ```
 
 Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
@@ -298,19 +295,21 @@ Example contents:
 ```properties
 # Build information
 
-build.file=hello-semver-java-0.0.5-2.jar
-build.timestamp=2018-09-17 21:08
+build.file=hello-semver-java-0.0.9-1.jar
+build.timestamp=2018-09-18 19:59
 
 # Maven information
 
-version=0.0.5-2
-groupId=com.dockter
-artifactId=hello-semver-java
+maven.version=0.0.9-1
+maven.groupId=com.dockter
+maven.artifactId=hello-semver-java
 
 # Git information
 
+git.branch=HEAD
 git.repository.name=hello-semver-java
-git.sha=1b62f4a951bd6b67ea41810aa8f4e92377f5bef6
+git.sha=c65ecdc2b66d9ac079b6592f893a6b6a00e6402c
+git.version.long=0.0.9-1-gc65ecdc
 ```
 
 To rebuild the JAR file
@@ -321,7 +320,7 @@ Example:
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
-git checkout 1b62f4a951bd6b67ea41810aa8f4e92377f5bef6
+git checkout c65ecdc2b66d9ac079b6592f893a6b6a00e6402c
 ```
 
 Run commands in [Demo package-run-cleanup](#demo-package-run-cleanup).
