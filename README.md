@@ -118,9 +118,9 @@ make precheck
 Running `make` without parameters will show the help information.
 
 ```console
+$ cd ${GIT_REPOSITORY_DIR}
 $ make
-
-make commands for hello-semver-java-0.0.7-11.jar:
+make commands for hello-semver-java-0.0.9.jar
   "make package"             Build locally
   "make docker-package"      Build in a docker container
   "make run"                 Run the java program
@@ -131,6 +131,11 @@ make commands for hello-semver-java-0.0.7-11.jar:
   "make git-tag-last"        Show last tag defined
   "make git-tag-list"        Show list of tags
 
+Git information:
+   Branch: master
+      SHA: 0ec10c6aa17faedb833f33b5d2e85681e73a1ae1
+  Version: 0.0.9-0-g0ec10c6
+
 List of make targets:
 clean default docker-package filename git-iterations git-iterations-all git-sha-last git-tag-last git-tag-list package precheck run
 ```
@@ -138,12 +143,15 @@ clean default docker-package filename git-iterations git-iterations-all git-sha-
 The first line of the output:
 
 ```console
-make commands for hello-semver-java-0.0.7-11.jar:
+make commands for hello-semver-java-0.0.9.jar
 ```
 
 shows the name of the file that will be build by running `make package` or `make docker-package`.
 
+The `Git information:` shows information from various `git` commands to show the state of the local repository.
+
 The `List of make targets:` shows all of the targets defined in the `Makefile`.
+It serves as a reminder of what `make` targets exist.
 
 ### Demo 1 - Local build and run
 
@@ -202,24 +210,24 @@ make clean
 The resulting JAR filename may have 3 different formats.
 Examples:
 
-1. hello-semver-java-0.0.7.jar
-1. hello-semver-java-0.0.7-2.jar
-1. hello-semver-java-0.0.7-2-dirty.jar
+1. hello-semver-java-0.0.9.jar
+1. hello-semver-java-0.0.9-1.jar
+1. hello-semver-java-0.0.9-1-dirty.jar
 
-`hello-semver-java-0.0.7.jar`
+`hello-semver-java-0.0.9.jar`
 is an example of a build for a specific release tag.
 
-`hello-semver-java-0.0.7-2.jar`
+`hello-semver-java-0.0.9-1.jar`
 is an example of a build that is 2 "iterations" after a specific release tag.
 
-`hello-semver-java-0.0.7-2-dirty.jar`
+`hello-semver-java-0.0.9-1-dirty.jar`
 is an example of code that has been locally modified 2 iterations after a specific release tag.
 
 To demonstrate:
 
 ```console
 cd ${GIT_REPOSITORY_DIR}
-git checkout 0.0.7
+git checkout 0.0.9
 make filename
 
 git checkout bd0b1de
