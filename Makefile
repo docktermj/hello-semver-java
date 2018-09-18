@@ -11,7 +11,6 @@ GIT_TAG ?= $(shell git describe --always --tags | awk -F "-" '{print $$1}')
 GIT_TAG_END ?= HEAD
 GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\-0//' -e 's/\-g.......//')
 
-
 # Docker
 
 DOCKER_IMAGE := $(GIT_REPOSITORY_NAME):$(GIT_VERSION)
