@@ -23,14 +23,6 @@ and prevent breakage upon incompatible API changes.
 If your software does not support a public API,
 then Semantic Versioning may not be a good fit.
 
-### Semantic Versioning in use
-
-Here are some organizations using Semantic Versioning:
-
-1. [Apache httpd](https://github.com/apache/httpd/releases)
-1. [Apache couchdb](https://github.com/apache/couchdb/releases)
-1. [Apache kafka](https://github.com/apache/kafka/releases)
-
 ### Maven dependency management used by the customer
 
 In this example, a customer is using version 1.x.x and avoiding 2.0.0 and above
